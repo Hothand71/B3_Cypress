@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('loginCommand', (username, password) => { 
+    cy.get('#login2').click().wait(500)
+    cy.get('#loginusername').type(username)
+    cy.get('#loginpassword').type(password)
+    cy.get('#logInModal > .modal-dialog > .modal-content > .modal-footer > .btn-primary').click().wait(500)
+    cy.get('#nameofuser').should('be.visible')
+})
